@@ -49,8 +49,11 @@ install_requires = [
 package_root = os.path.abspath(os.path.dirname(__file__))
 
 readme_filename = os.path.join(package_root, "README.md")
-with io.open(readme_filename, encoding="utf-8") as readme_file:
+try:
+    with io.open(readme_filename, encoding="utf-8") as readme_file:
     readme = readme_file.read()
+    except FileNotFoundError:
+    readme = "Google API Client Library for Python"
 
 package_root = os.path.abspath(os.path.dirname(__file__))
 
@@ -83,7 +86,6 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
-        "Programming Language :: Python :: 3.14",
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
